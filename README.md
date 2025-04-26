@@ -20,8 +20,11 @@
         git clone https://github.com/Heroku121323/CTL-devops-kt1.git
 
 2. ( необязательно ) Добавляем alias чтобы постоянно не вводить путь до программы
+
+        echo 'alias ctl="/абсолютный/путь/до/программы"' >> ~/.bashrc
+
         
-        export echo "alias ctl=*абсолютный путь до программы*"
+        . ~/.bashrc
 
 3. Используем
 
