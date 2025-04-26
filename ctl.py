@@ -22,35 +22,59 @@ def power(x, y):
     """Raise x to the power of y."""
     return x ** y
 
+def factorial(n):
+    """Calculate the factorial of n."""
+    if n < 0:
+        raise ValueError("Cannot calculate factorial of a negative number.")
+    if n == 0 or n == 1:
+        return 1
+    return n * factorial(n - 1)
+
+def usage():
+    print("Правильное использование: ctl.py <operation> <x> <y>")
+    print("Доступные операции: add, subtract, multiply, divide, power, factorial")
+    sys.exit(1)
+
+OPS_ARITY = {
+    "add": 2,
+    "subtract": 2,
+    "multiply": 2,
+    "divide": 2,
+    "power": 2,
+    "factorial": 1
+}
+
 def main():
-    if len(sys.argv) != 4:
-        print(f"Правильное использование: {sys.argv[0]} <operation> <x> <y>")
-        print("Доступные операции: add, subtract, multiply, divide, power")
-        sys.exit(1)
-    
-    
-    op, xs, ys = sys.argv[1], sys.argv[2], sys.argv[3]
-    x = float(xs)
-    y = float(ys)
+    # Проверяем, что операция задана и она поддерживается
+    if len(sys.argv) < 2 or sys.argv[1] not in OPS_ARITY:
+        usage()
+
+    op = sys.argv[1]
+    arity = OPS_ARITY[op]
 
 
-    if op == "add":
-        result = add(x, y)
-    elif op == "subtract":
-        result = subtract(x, y)
-    elif op == "multiply":
-        result = multiply(x, y)
-    elif op == "divide":
-        try:
-            result = divide(x, y)
-        except ValueError as e:
-            print(e)
-            sys.exit(1)
-    elif op == "power":
-        result = power(x, y)
+    expected_len = 2 + OPS_ARITY[op]
+    if len(sys.argv) != expected_len:
+        usage()
+
+    if arity == 1:
+        x = int(sys.argv[2])
+        y = None   
     else:
-        print(f"Неизвестная операция: {op}")
-        sys.exit(1)
+        x = int(sys.argv[2])
+        y = int(sys.argv[3])
+
+
+    if op == "factorial":
+        result = factorial(x)
+    else:
+        result = {
+            "add": add,
+            "subtract": subtract,
+            "multiply": multiply,
+            "divide": divide,
+            "power": power
+        }[op](x, y)
 
 
     print(f"Результат: {result}")
