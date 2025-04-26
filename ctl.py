@@ -18,11 +18,14 @@ def divide(x, y):
         raise ValueError("Cannot divide by zero.")
     return x / y
 
+def power(x, y):
+    """Raise x to the power of y."""
+    return x ** y
 
 def main():
     if len(sys.argv) != 4:
         print(f"Правильное использование: {sys.argv[0]} <operation> <x> <y>")
-        print("Доступные операции: add, subtract, multiply, divide")
+        print("Доступные операции: add, subtract, multiply, divide, power")
         sys.exit(1)
     
     
@@ -43,9 +46,12 @@ def main():
         except ValueError as e:
             print(e)
             sys.exit(1)
+    elif op == "power":
+        result = power(x, y)
     else:
         print(f"Неизвестная операция: {op}")
         sys.exit(1)
+
 
     print(f"Результат: {result}")
 if __name__ == "__main__":
