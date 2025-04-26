@@ -46,3 +46,10 @@ ctl add 3 3
 # CHANGELOG
 
 История изменений/исправлений программы находится в файле [changelog](./changelog.md)
+
+
+# network
+
+![изображение](https://github.com/user-attachments/assets/b000458b-c26b-4e93-99e9-4089fb0b5448)
+
+
