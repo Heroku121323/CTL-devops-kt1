@@ -18,7 +18,7 @@
 # INSTALL
 1. Клонируем репозиторий или скачиваем архив
 
-        git clone https://github.com/Heroku121323/CTL-devops-kt1.git
+    git clone https://github.com/Heroku121323/CTL-devops-kt1.git
 
 2. ( необязательно ) Добавляем alias чтобы постоянно не вводить путь до программы
 ```bash
@@ -30,7 +30,10 @@ echo 'alias ctl="/абсолютный/путь/до/программы"' >> ~/.
 
 3. Используем
 
-        $ ctl add 3 3 -> 6
+    ctl add 3 3
+
+    Результат: 6
+
 
 # Шпаршалка
 
