@@ -30,6 +30,13 @@ def factorial(n):
         return 1
     return n * factorial(n - 1)
 
+def root(x):
+    """Calculate the square root of x."""
+    if x < 0:
+        raise ValueError("Cannot calculate square root of a negative number.")
+    return x ** 0.5
+
+
 def usage():
     print("Правильное использование: ctl.py <operation> <x> <y>")
     print("Доступные операции: add, subtract, multiply, divide, power, factorial")
@@ -41,7 +48,8 @@ OPS_ARITY = {
     "multiply": 2,
     "divide": 2,
     "power": 2,
-    "factorial": 1
+    "factorial": 1,
+    "root": 1
 }
 
 def main():
@@ -65,8 +73,11 @@ def main():
         y = int(sys.argv[3])
 
 
-    if op == "factorial":
-        result = factorial(x)
+    if arity == 1:
+        result = {
+            "factorial": factorial,
+            "root": root
+        }[op](x)
     else:
         result = {
             "add": add,
